@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using API_Test001.ClassLibrary;
 
 namespace API_Test001
 {
@@ -36,6 +37,8 @@ namespace API_Test001
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+
+            app.UseMiddleware<AuthenticationMiddleware>();
 
             app.UseMvc();
         }
